@@ -17,7 +17,7 @@ document.querySelector('#add-recipe').addEventListener('click', (e) => {
         ingredients: ''
     })
     saveRecipes()
-    location.assign(`/edit.html#${id}`)
+    location.assign(`./edit.html#${id}`)
 })
 
 // get search input and set filter

@@ -12,7 +12,7 @@ let recipe = recipes.find((recipe) => {
 })
 
 if (recipe === undefined) {
-    location.assign('/index.html')
+    location.assign('./index.html')
 }
 
 titleElement.value = recipe.title
@@ -31,7 +31,7 @@ instructionsElement.addEventListener('input', (e) => {
 removeElement.addEventListener('click', (e) => {
     removeRecipe(recipe.id)
     saveRecipes(recipes)
-    location.assign('/index.html')
+    location.assign('./index.html')
 })
 
 // sync changes across multiple windows
@@ -43,7 +43,7 @@ window.addEventListener('storage', (e) => {
         })
         
         if (recipe === undefined) {
-            location.assign('/index.html')
+            location.assign('./index.html')
         }
         
         titleElement.value = recipe.title

@@ -47,7 +47,7 @@ const generateRecipeDOM = (recipe) => {
     } else {
         textEl.textContent = 'Unnamed Recipe'
     }
-    textEl.setAttribute('href', `/edit.html#${recipe.id}`)
+    textEl.setAttribute('href', `./edit.html#${recipe.id}`)
     recipeEl.appendChild(textEl)
 
     return recipeEl
