@@ -1,4 +1,5 @@
-
+const headingElement =  document.querySelector('#recipe-heading')
+console.log(headingElement)
 const titleElement = document.querySelector('#recipe-title')
 const instructionsElement = document.querySelector('#recipe-instructions')
 const removeElement = document.querySelector('#remove-recipe')
@@ -15,6 +16,7 @@ if (recipe === undefined) {
     location.assign('./index.html')
 }
 
+headingElement.textContent = recipe.title
 titleElement.value = recipe.title
 instructionsElement.value = recipe.instructions
 
@@ -46,6 +48,8 @@ window.addEventListener('storage', (e) => {
             location.assign('./index.html')
         }
         
+
+        headingElement.textContent = recipe.title
         titleElement.value = recipe.title
         instructionsElement.value = recipe.instructions
     }
