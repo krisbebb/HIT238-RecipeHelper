@@ -3,15 +3,16 @@
     "short_name": "Recipe Helper",
     "icons": [
         {
-            "src": "images/icons/icon-128.png",
+            "src": "images/icons/Cooking-icon128.png",
             "sizes": "128x128",
             "type": "image/png"
         },
         {
-            "src": "images/icons/icon-512.png",
+            "src": "images/icons/Cooking-icon512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
+        
     ],
     "start_url": ".",
     "display": "standalone",
