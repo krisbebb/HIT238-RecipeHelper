@@ -2,15 +2,15 @@ var CACHE_TITLE = 'recipe-cache';
 var CACHE_VERSION = 'v1';
 var CACHE_NAME = CACHE_TITLE + '-' + CACHE_VERSION;
 var urlsToCache = [
-  '/',
-  '/sw.js',
-  '/index.html',
-  '/edit.html',
-  '/uuidv4.js',
-  '/recipe-functions.js',
-  '/recipe-app.js',
-  '/recipe-edit.js',
-  '/manifest.json'
+  './',
+  './sw.js',
+  './index.html',
+  './edit.html',
+  './uuidv4.js',
+  './recipe-functions.js',
+  './recipe-app.js',
+  './recipe-edit.js',
+  './manifest.json'
 ];
 
 self.addEventListener('install', function(event) {
