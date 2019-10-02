@@ -1,3 +1,5 @@
+// import { removeRecipe } from './recipe-functions'
+
 const headingElement =  document.querySelector('#recipe-heading')
 const titleElement = document.querySelector('#recipe-title')
 const instructionsElement = document.querySelector('#recipe-instructions')
@@ -19,6 +21,17 @@ let recipe = recipes.find((recipe) => {
 
 if (recipe === undefined) {
     location.assign('./index.html')
+}
+
+// remove recipe from the array
+const removeIngredient = (item) => {
+    const ingredientIndex = recipe.ingredients.findIndex((ingredient) => {
+        return ingredient.item === item
+    })
+
+    if (ingredientIndex > -1) {
+        recipe.ingredients.splice(ingredientIndex, 1)
+    }
 }
 
 // Render application todos based on filters
@@ -51,13 +64,15 @@ const renderIngredients= () => {
   
   }
   
+
+
   // Get the DOM elements for an individual note
   const generateIngredientDOM = (ingredient) => {
     const ingredientEl = document.createElement('label')
     const containerEl = document.createElement('div')
     const checkbox = document.createElement('input')
     const ingredientText = document.createElement('span')
-    // const removeButton = document.createElement('button')
+    const removeButton = document.createElement('button')
   
     // Setup todo checkbox
     checkbox.setAttribute('type', 'checkbox')
@@ -74,18 +89,18 @@ const renderIngredients= () => {
     containerEl.appendChild(ingredientText)
   
     // setup container
-    ingredientEl.classList.add('list-item')
+    ingredientEl.classList.add('list-group-item')
     containerEl.classList.add('list-item__container')
     ingredientEl.appendChild(containerEl)
   
     // Setup the remove button
-    // removeButton.textContent = 'remove'
-    // removeButton.classList.add('button', 'button--text')
-    // todoEl.appendChild(removeButton)
-    // removeButton.addEventListener('click', () => {
-    //   removeTodo(todo.id)
-    //   renderTodos()
-    // })
+    removeButton.textContent = 'remove'
+    removeButton.classList.add('button', 'button--text')
+    ingredientEl.appendChild(removeButton)
+    removeButton.addEventListener('click', () => {
+        removeIngredient(ingredient.item)
+        renderIngredients()
+    })
   
     return ingredientEl
   }
