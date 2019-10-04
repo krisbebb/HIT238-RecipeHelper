@@ -48,6 +48,7 @@ const generateRecipeDOM = (recipe) => {
         textEl.textContent = 'Unnamed Recipe'
     }
     textEl.setAttribute('href', `./edit.html#${recipe.id}`)
+    recipeEl.classList.add('list-group-item')
     recipeEl.appendChild(textEl)
 
     return recipeEl

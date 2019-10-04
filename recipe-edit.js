@@ -90,12 +90,12 @@ const renderIngredients= () => {
   
     // setup container
     ingredientEl.classList.add('list-group-item')
-    containerEl.classList.add('list-item__container')
+    containerEl.classList.add('list-group-container')
     ingredientEl.appendChild(containerEl)
   
     // Setup the remove button
     removeButton.textContent = 'remove'
-    removeButton.classList.add('button', 'button--text')
+    removeButton.classList.add('btn', 'btn-primary', 'btn--remove')
     ingredientEl.appendChild(removeButton)
     removeButton.addEventListener('click', () => {
         removeIngredient(ingredient.item)
