@@ -4,6 +4,7 @@ const headingElement =  document.querySelector('#recipe-heading')
 const titleElement = document.querySelector('#recipe-title')
 const instructionsElement = document.querySelector('#recipe-instructions')
 const removeElement = document.querySelector('#remove-recipe')
+const saveElement = document.querySelector('#save-recipe')
 const ingredientsElement = document.querySelector('#ingredients')
 const ingredientsSave = document.querySelector('#ingredients-save')
 const ingredientsInput = document.querySelector('#ingredients-input')
@@ -95,7 +96,7 @@ const renderIngredients= () => {
   
     // Setup the remove button
     removeButton.textContent = 'remove'
-    removeButton.classList.add('btn', 'btn-primary', 'btn--remove')
+    removeButton.classList.add('btn', 'btn-danger', 'btn--remove')
     ingredientEl.appendChild(removeButton)
     removeButton.addEventListener('click', () => {
         removeIngredient(ingredient.item)
@@ -144,6 +145,10 @@ instructionsElement.addEventListener('input', (e) => {
 removeElement.addEventListener('click', (e) => {
     removeRecipe(recipe.id)
     saveRecipes(recipes)
+    location.assign('./index.html')
+})
+
+saveElement.addEventListener('click', (e) => {
     location.assign('./index.html')
 })
 

@@ -17,6 +17,7 @@
                 </ul>
                 <h1>Recipe Helper</h1>
                 <h2 id="recipe-heading"></h2>
+
             </div>
         </header>
         <div class="container">
@@ -25,7 +26,6 @@
                     <span class="input-group-text">Title</span>
                 </div>
                 <input id="recipe-title" type="text" class="form-control" placeholder="Recipe Title">
-                <button type="button" class="btn btn-primary" id="remove-recipe">Remove recipe</button>
                 
             </div>
             <div class="input-group">
@@ -35,10 +35,16 @@
                 <textarea class="form-control" id="recipe-instructions" placeholder="Instructions"></textarea>
             </div>
 
+           
+            <button type="button" class="btn btn-danger" id="remove-recipe">Remove recipe</button>
+            
+
             <div id="ingredients">
                 <h2>Ingredients</h2>
+               
                 <div id='ingredients-list' class="list-group">
                 </div>
+
                 <button type="button" class="btn btn-primary" id="add-ingredient" data-toggle="modal" data-target="#ingredientModal">Add Ingredient</button>
                 <!-- Trigger the modal with a button -->
 
@@ -67,11 +73,18 @@
 
                     </div>
                 </div>
+              
             </div>
-            
-            <a class="nav-link active" href="./index.html">Submit</a>
+           
+           
+            <!-- <a class="nav-link active" href="./index.html">Submit</a>
+            <a class="nav-link active" href="./index.html">Submit</a> -->
+            <button type="button" class="btn btn-success" id="save-recipe">Done</button>
+    
         </div>
+    
         
+
         <div class="card-footer text-muted">
            <p>Created by Kris Bebbington</p>
         </div>

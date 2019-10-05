@@ -28,18 +28,19 @@ const removeRecipe = (id) => {
 
 // generate DOM structure for recipe
 const generateRecipeDOM = (recipe) => {
-    const recipeEl = document.createElement('div')
-    const textEl = document.createElement('a')
-    const button = document.createElement('button')
+    const recipeEl = document.createElement('label')
+    const containerEl = document.createElement('div')
+    const textEl = document.createElement('span')
+    // const button = document.createElement('button')
     
     // delete recipe button
-    button.textContent = 'x'
-    recipeEl.appendChild(button)
-    button.addEventListener('click', (e) => {
-        removeRecipe(recipe.id)
-        saveRecipes(recipes)
-        renderRecipes(recipes, filters)
-    })
+    // button.textContent = 'x'
+    // recipeEl.appendChild(button)
+    // button.addEventListener('click', (e) => {
+    //     removeRecipe(recipe.id)
+    //     saveRecipes(recipes)
+    //     renderRecipes(recipes, filters)
+    // })
 
     // recipe title text
     if (recipe.title.length > 0) {
@@ -47,9 +48,15 @@ const generateRecipeDOM = (recipe) => {
     } else {
         textEl.textContent = 'Unnamed Recipe'
     }
-    textEl.setAttribute('href', `./edit.html#${recipe.id}`)
+    // textEl.setAttribute('href', `./edit.html#${recipe.id}`)
+    recipeEl.addEventListener('click', ()=>{
+        location.assign(`./edit.html#${recipe.id}`)
+
+    })
     recipeEl.classList.add('list-group-item')
-    recipeEl.appendChild(textEl)
+    containerEl.appendChild(textEl)
+    recipeEl.appendChild(containerEl)
+
 
     return recipeEl
 }
