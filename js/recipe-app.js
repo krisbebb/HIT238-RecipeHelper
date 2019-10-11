@@ -14,7 +14,8 @@ document.querySelector('#add-recipe').addEventListener('click', (e) => {
         id: id,
         title: '',
         instructions: '',
-        ingredients: []
+        ingredients: [],
+        allAvailable: false
     })
     saveRecipes()
     location.assign(`./edit.html#${id}`)

@@ -65,7 +65,17 @@ const renderIngredients= () => {
   
   }
   
-
+  const checkAvailability = () => {
+        recipe.ingredients.forEach((ingredient) => {
+            if (!ingredient.inStock) {
+                return false
+                
+            } else {
+                return true
+            }
+           
+        })
+}
 
   // Get the DOM elements for an individual note
   const generateIngredientDOM = (ingredient) => {
@@ -77,10 +87,13 @@ const renderIngredients= () => {
   
     // Setup todo checkbox
     checkbox.setAttribute('type', 'checkbox')
+    checkbox.classList.add('hidden')
     checkbox.checked = ingredient.inStock
     containerEl.appendChild(checkbox)
     checkbox.addEventListener('click', () => {
         ingredient.inStock = !ingredient.inStock
+        recipe.allAvailable = checkAvailability()
+        console.log(checkAvailability())
         saveRecipes()
         renderIngredients()
     })
@@ -92,7 +105,16 @@ const renderIngredients= () => {
     // setup container
     ingredientEl.classList.add('list-group-item')
     containerEl.classList.add('list-group-container')
+   
     ingredientEl.appendChild(containerEl)
+
+    if (!ingredient.inStock){
+        ingredientEl.classList.add('ingredient-outOfStock')
+        const stockEl = document.createElement('span')
+        stockEl.textContent = "Out Of Stock"
+ 
+        ingredientEl.appendChild(stockEl)
+     }
   
     // Setup the remove button
     removeButton.textContent = 'remove'
@@ -105,7 +127,6 @@ const renderIngredients= () => {
   
     return ingredientEl
   }
-
 
 renderIngredients()
 

@@ -10,6 +10,7 @@ const getSavedRecipes = () => {
     }
 }
 
+
 // save recipes to localStorage
 const saveRecipes = () => {
     localStorage.setItem('recipes', JSON.stringify(recipes))
@@ -58,6 +59,7 @@ const generateRecipeDOM = (recipe) => {
     recipeEl.appendChild(containerEl)
 
 
+
     return recipeEl
 }
 
@@ -72,6 +74,7 @@ const renderRecipes = function(recipes, filters) {
     filteredRecipes.forEach((recipe) => {
         const recipeEl = generateRecipeDOM(recipe)
         document.querySelector('#recipes').appendChild(recipeEl)
+
     })
 }
 
