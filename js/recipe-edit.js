@@ -35,7 +35,7 @@ const removeIngredient = (item) => {
     }
 }
 
-// Render application todos based on filters
+// Render ingredients
 const renderIngredients= () => {
     const ingredientEl = document.querySelector('#ingredients-list')
     // const { searchText, hideCompleted } = getFilters()
@@ -65,17 +65,16 @@ const renderIngredients= () => {
   
   }
   
-  const checkAvailability = () => {
-        recipe.ingredients.forEach((ingredient) => {
-            if (!ingredient.inStock) {
-                return false
-                
+const checkAvailability = () => {
+       for (let i = 0; i < recipe.ingredients.length; i++) {
+            if (!recipe.ingredients[i].inStock) {
+                recipe.allAvailable = false
+                return
             } else {
-                return true
+                recipe.allAvailable = true
             }
-           
-        })
-}
+       }
+    }
 
   // Get the DOM elements for an individual note
   const generateIngredientDOM = (ingredient) => {
@@ -92,8 +91,7 @@ const renderIngredients= () => {
     containerEl.appendChild(checkbox)
     checkbox.addEventListener('click', () => {
         ingredient.inStock = !ingredient.inStock
-        recipe.allAvailable = checkAvailability()
-        console.log(checkAvailability())
+        checkAvailability()
         saveRecipes()
         renderIngredients()
     })
@@ -112,7 +110,6 @@ const renderIngredients= () => {
         ingredientEl.classList.add('ingredient-outOfStock')
         const stockEl = document.createElement('span')
         stockEl.textContent = "Out Of Stock"
- 
         ingredientEl.appendChild(stockEl)
      }
   
@@ -127,7 +124,9 @@ const renderIngredients= () => {
   
     return ingredientEl
   }
-
+if (recipe.allAvailable === true) {
+    console.log("all ingredients available")
+}
 renderIngredients()
 
 headingElement.textContent = recipe.title
