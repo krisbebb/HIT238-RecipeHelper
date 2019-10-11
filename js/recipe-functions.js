@@ -10,6 +10,7 @@ const getSavedRecipes = () => {
     }
 }
 
+
 // save recipes to localStorage
 const saveRecipes = () => {
     localStorage.setItem('recipes', JSON.stringify(recipes))
@@ -48,14 +49,28 @@ const generateRecipeDOM = (recipe) => {
     } else {
         textEl.textContent = 'Unnamed Recipe'
     }
+
+    containerEl.appendChild(textEl)
+
+    
     // textEl.setAttribute('href', `./edit.html#${recipe.id}`)
     recipeEl.addEventListener('click', ()=>{
         location.assign(`./edit.html#${recipe.id}`)
 
     })
     recipeEl.classList.add('list-group-item')
-    containerEl.appendChild(textEl)
+    containerEl.classList.add('list-group-container')
+
+    
     recipeEl.appendChild(containerEl)
+
+    if (recipe.allAvailable) {
+        const availEl = document.createElement('span')
+        availEl.textContent = 'In Stock'
+    recipeEl.appendChild(availEl)
+
+    }
+
 
 
     return recipeEl
@@ -72,6 +87,7 @@ const renderRecipes = function(recipes, filters) {
     filteredRecipes.forEach((recipe) => {
         const recipeEl = generateRecipeDOM(recipe)
         document.querySelector('#recipes').appendChild(recipeEl)
+
     })
 }
 

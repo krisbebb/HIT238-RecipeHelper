@@ -9,3 +9,12 @@
 #add-ingredient {
     margin: 2rem 0;
 }
+
+.ingredient-outOfStock {
+    background-color: #ddd;
+   
+}
+
+.hidden {
+    display: none;
+}
