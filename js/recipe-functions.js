@@ -64,12 +64,17 @@ const generateRecipeDOM = (recipe) => {
     
     recipeEl.appendChild(containerEl)
 
+    const availEl = document.createElement('span')
+
     if (recipe.allAvailable) {
-        const availEl = document.createElement('span')
         availEl.textContent = 'In Stock'
+
+    } else {
+        availEl.textContent = 'Out of Stock'
+    }
+
     recipeEl.appendChild(availEl)
 
-    }
 
 
 
@@ -79,16 +84,38 @@ const generateRecipeDOM = (recipe) => {
 // render using filters
 const renderRecipes = function(recipes, filters) {
     const filteredRecipes = recipes.filter((recipe) => {
-        return recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()) 
+        
+        const searchTextMatch = recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()) 
+        if (filters.stockFilter === 'inStock') {
+            let stockFilterMatch = recipe.allAvailable
+            return searchTextMatch && stockFilterMatch 
+        } else if (filters.stockFilter === 'outOfStock') {
+            let stockFilterMatch = !recipe.allAvailable
+            return searchTextMatch && stockFilterMatch 
+        } else {
+            return searchTextMatch
+        }
+       
+    
+        
     })
-
+   
     document.querySelector('#recipes').innerHTML = ''
 
-    filteredRecipes.forEach((recipe) => {
-        const recipeEl = generateRecipeDOM(recipe)
-        document.querySelector('#recipes').appendChild(recipeEl)
+    if (filteredRecipes.length > 0) {
+        filteredRecipes.forEach((recipe) => {
+            const recipeEl = generateRecipeDOM(recipe)
+            document.querySelector('#recipes').appendChild(recipeEl)
+    
+        })
+      } else {
+        const messageEl = document.createElement('p')
+        messageEl.classList.add('empty-message')
+        messageEl.textContent = 'No recipes to show'
+        document.querySelector('#recipes').appendChild(messageEl)
+      }
 
-    })
+    
 }
 
 // export { removeRecipe }

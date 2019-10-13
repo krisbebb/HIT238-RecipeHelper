@@ -2,7 +2,8 @@ let recipes = getSavedRecipes()
 
 // filters
 const filters = {
-    searchText: ''
+    searchText: '',
+    stockFilter: 'all'
 }
 
 renderRecipes(recipes, filters)
@@ -25,6 +26,12 @@ document.querySelector('#add-recipe').addEventListener('click', (e) => {
 document.querySelector('#search-text').addEventListener('input', (e) => {
     filters.searchText = e.target.value
     renderRecipes(recipes, filters)
+})
+
+document.querySelector('#recipe-filter').addEventListener('change', (e) => {
+  console.log(e.target.value)
+  filters.stockFilter = e.target.value
+  renderRecipes(recipes, filters)
 })
 
 // sync changes from edit page
