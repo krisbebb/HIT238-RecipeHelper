@@ -6,3 +6,11 @@
     justify-content: space-between;
     align-items: center;
 }
+
+#recipes {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 50vh;
+    margin: 1em 0;
+    border: 2px solid black;
+}
