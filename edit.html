@@ -11,25 +11,24 @@
     </head>
     <body>
         <header class="header">
-            <div class="container">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="./index.html">Home</a>
-                    </li>
-                </ul>
-                <h1>Recipe Helper</h1>
-                <h2 id="recipe-heading"></h2>
-
+            <ul class="nav top-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="./index.html">Home</a>
+                </li>
+            </ul>
+            <div class="header__titles">
+                <h1 class="header__title">Recipe Helper</h1>
+                <h2 class="header__subtitle" id="recipe-heading"></h2>
             </div>
         </header>
-        <div class="container">
+        <div class="container title-input">
             <div class="input-group mb-3">
                 <div class="input-group-append">
                     <span class="input-group-text">Title</span>
                 </div>
                 <input id="recipe-title" type="text" class="form-control" placeholder="Recipe Title">
+            </div>
         </div>
-              
         <div class="container">
                 
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -43,12 +42,15 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="ingredients" role="tabpanel" aria-labelledby="ingredients-tab">
                         <div id="ingredients-section">
-                                <h2>Ingredients</h2>
+                            <div class="tab__heading-area">
+                                    <h2 class="tab__heading">Ingredients</h2>
+                                    <button type="button" class="btn btn-primary" id="add-ingredient" data-toggle="modal" data-target="#ingredientModal">Add</button>
+                                   
+                            </div>
                                
                                 <div id='ingredients-list' class="list-group">
                                 </div>
                 
-                                <button type="button" class="btn btn-primary" id="add-ingredient" data-toggle="modal" data-target="#ingredientModal">Add Ingredient</button>
                                 <!-- Trigger the modal with a button -->
                 
                                 <!-- Modal -->
@@ -80,29 +82,32 @@
                             </div>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Instructions</span>
+                    
+                        <div class="tab__heading-area">
+                            <h2 class="tab__heading">Instructions</h2>
                         </div>
-                        <textarea class="form-control" id="recipe-instructions" placeholder="Instructions"></textarea>
+                    <div class="input-group">
+                        <!-- <div class="input-group-prepend"> -->
+                        <!-- <div class="card">
+                                <span class="card-title">Instructions</span> -->
+
+                            <!-- <span class="input-group-text">Instructions</span> -->
+                        <!-- </div> -->
+                        
+                        <textarea class="form-control" id="recipe-instructions" placeholder="Add Recipe Instructions Here"></textarea>
                     </div>
                 
                 </div>
             </div>
-
-
-          
-           
-            <button type="button" class="btn btn-danger" id="remove-recipe">Remove recipe</button>
+            <div class="actions">
+                    <button type="button" class="btn btn-danger" id="remove-recipe">Delete Recipe</button>
             
-
-           
-           
-           
-            <!-- <a class="nav-link active" href="./index.html">Submit</a>
-            <a class="nav-link active" href="./index.html">Submit</a> -->
-            <button type="button" class="btn btn-success" id="save-recipe">Done</button>
-    
+                    <!-- <a class="nav-link active" href="./index.html">Submit</a>
+                    <a class="nav-link active" href="./index.html">Submit</a> -->
+                    <button type="button" class="btn btn-success" id="save-recipe">Save and Return Home</button>
+            
+            </div>
+            
         </div>
     
         

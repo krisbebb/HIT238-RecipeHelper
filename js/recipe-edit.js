@@ -119,11 +119,15 @@ const checkAvailability = () => {
     ingredientEl.appendChild(removeButton)
     removeButton.addEventListener('click', () => {
         removeIngredient(ingredient.item)
+        checkAvailability()
+
+        saveRecipes()
         renderIngredients()
     })
-  
+    checkAvailability()
     return ingredientEl
   }
+checkAvailability()
 if (recipe.allAvailable === true) {
     console.log("all ingredients available")
 }
@@ -165,10 +169,12 @@ instructionsElement.addEventListener('input', (e) => {
 removeElement.addEventListener('click', (e) => {
     removeRecipe(recipe.id)
     saveRecipes(recipes)
+    
     location.assign('./index.html')
 })
 
 saveElement.addEventListener('click', (e) => {
+
     location.assign('./index.html')
 })
 
@@ -178,6 +184,7 @@ ingredientsSave.addEventListener('click', (e) => {
         inStock: false
     }
     recipe.ingredients.push(ingredient)
+    checkAvailability()
     saveRecipes(recipes)
     renderIngredients()
 })
