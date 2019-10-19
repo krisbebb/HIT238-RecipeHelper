@@ -1,56 +1,21 @@
-let recipes = getSavedRecipes()
+import { getRecipes, createRecipe, removeRecipe, updateRecipe } from './recipes'
+import { getFilters, setFilters } from './filters'
 
-// filters
-const filters = {
-    searchText: '',
-    stockFilter: 'all'
-}
+// console.log(getRecipes());
+// createRecipe()
+// removeRecipe('da91720f-0546-4902-a0d1-6c0c314630fb')
+// updateRecipe('09349fae-e24b-4a24-af97-7ae9b3ea6540', {
+//     title: 'new recipe',
+//     instructions: 'boilwater',
+//     ingredients: ['milk'],
+//     allAvailable: true
+// })
+// console.log(getRecipes());
 
-renderRecipes(recipes, filters)
-
-// add event listener to button
-document.querySelector('#add-recipe').addEventListener('click', (e) => {
-    const id = uuidv4()
-    recipes.push({
-        id: id,
-        title: '',
-        instructions: '',
-        ingredients: [],
-        allAvailable: false
-    })
-    saveRecipes()
-    location.assign(`./edit.html#${id}`)
+console.log(getFilters())
+setFilters({
+    searchText: 'foodstuff',
+    stockFilter: 'outOfStock'
 })
+console.log(getFilters())
 
-// get search input and set filter
-document.querySelector('#search-text').addEventListener('input', (e) => {
-    filters.searchText = e.target.value
-    renderRecipes(recipes, filters)
-})
-
-document.querySelector('#recipe-filter').addEventListener('change', (e) => {
-  console.log(e.target.value)
-  filters.stockFilter = e.target.value
-  renderRecipes(recipes, filters)
-})
-
-// sync changes from edit page
-window.addEventListener('storage', (e) => {
-    if (e.key === 'recipes') {
-        recipes = JSON.parse(e.newValue)
-        renderRecipes(recipes, filters)
-    }
-})
-
-
-if ('serviceWorker' in navigator) {
-	window.addEventListener('load', function() {
-	  navigator.serviceWorker.register('/sw.js').then(function(registration) {
-		// Registration was successful
-		console.log('ServiceWorker registration successful with scope: ', registration.scope);
-	  }, function(err) {
-		// registration failed :(
-		console.log('ServiceWorker registration failed: ', err);
-	  });
-	});
-  }
