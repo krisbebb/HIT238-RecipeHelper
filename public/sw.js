@@ -1,70 +1,9 @@
-var CACHE_TITLE = 'recipe-cache';
-var CACHE_VERSION = 'v1';
-var CACHE_NAME = CACHE_TITLE + '-' + CACHE_VERSION;
-// const { assets } = global.serviceWorkerOption
-var urlsToCache = [
-  // '../',
-  // ...assets,
-  '/',
-  // '/favicon.ico',
-  // './sw.js',
-  '/images/icons/Cooking-icon128.png',
-  '/images/icons/Cooking-icon512.png',
-  // '/css/bootstrap.min.css',
-  // '/css/bootstrap.min.css.map',
-  '/css/edit.css',
-  // '/css/home.css',
-  '/css/index.css',
-
-  // '/js/jquery-3.4.1.min.js',
-  // '/js/bootstrap.bundle.min.js',
-  // '/js/bootstrap.bundle.min.js.map',
-  '/index.html',
-  '/edit.html',
-  // '/js/uuidv4.js',
-  // '/js/recipe-functions.js',
-  '/js/index-bundle.js',
-  '/js/edit-bundle.js',
-  '/manifest.json'
-];
-
-
-self.addEventListener('install', function(event) {
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        return cache.addAll(urlsToCache);
-      })
-  );
-});
-
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
+var serviceWorkerOption = {
+  "assets": [
+    "/edit-bundle.js",
+    "/index-bundle.js"
+  ]
+};
         
-      }
-    )
-  );
-});
-
-self.addEventListener('activate', function(event) {
-
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.map(function(cacheName) {
-                    if(cacheName !== CACHE_NAME && cacheName.indexOf(CACHE_TITLE) === 0) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
+        !function(e){var n={};function t(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return e[r].call(i.exports,i,i.exports,t),i.l=!0,i.exports}t.m=e,t.c=n,t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{enumerable:!0,get:r})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,n){if(1&n&&(e=t(e)),8&n)return e;if(4&n&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(t.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&n&&"string"!=typeof e)for(var i in e)t.d(r,i,function(n){return e[n]}.bind(null,i));return r},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},t.p="",t(t.s=0)}([function(e,n){var t=["/","/images/icons/Cooking-icon128.png","/images/icons/Cooking-icon512.png","/css/edit.css","/css/index.css","/index.html","/edit.html","/js/index-bundle.js","/js/edit-bundle.js","/manifest.json"];self.addEventListener("install",(function(e){e.waitUntil(caches.open("recipe-cache-v1").then((function(e){return e.addAll(t)})))})),self.addEventListener("fetch",(function(e){e.respondWith(caches.match(e.request).then((function(n){return n||fetch(e.request)})))})),self.addEventListener("activate",(function(e){e.waitUntil(caches.keys().then((function(e){return Promise.all(e.map((function(e){if("recipe-cache-v1"!==e&&0===e.indexOf("recipe-cache"))return caches.delete(e)})))})))}))}]);
+//# sourceMappingURL=sw.js.map
