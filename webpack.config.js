@@ -1,10 +1,16 @@
+
+var ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const path = require('path')
 
 module.exports = {
-    entry: './src/index.js',
+
+    entry: {
+        index: ["@babel/polyfill", './src/index.js'],
+        edit: ["@babel/polyfill", './src/edit.js']
+    },
     output: {
         path: path.resolve(__dirname, 'public/js'),
-        filename: 'bundle.js'
+        filename: '[name]-bundle.js'
     },
     module: {
         rules: [{
@@ -13,11 +19,16 @@ module.exports = {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets: ['env']
+                    presets: ['@babel/preset-env']
                 }
             }
         }]
     },
+    plugins: [
+        new ServiceWorkerWebpackPlugin({
+          entry: path.join(__dirname, 'src/sw.js'),
+        }),
+      ],
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
         publicPath: '/js/'
