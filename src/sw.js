@@ -25,7 +25,8 @@ var urlsToCache = [
   // '/js/recipe-functions.js',
   '/js/index-bundle.js',
   '/js/edit-bundle.js',
-  '/manifest.json'
+  '/manifest.json',
+  '/images/icons/Cooking-icon128.png'
 ];
 
 
