@@ -1,21 +1,19 @@
 var CACHE_TITLE = 'recipe-cache';
 var CACHE_VERSION = 'v1';
 var CACHE_NAME = CACHE_TITLE + '-' + CACHE_VERSION;
-// const { assets } = global.serviceWorkerOption
+const { assets } = global.serviceWorkerOption
 var urlsToCache = [
   // '../',
-  // ...assets,
+  ...assets,
   '/',
   // '/favicon.ico',
-  // './sw.js',
-  '/images/icons/Cooking-icon128.png',
-  '/images/icons/Cooking-icon512.png',
-  // '/css/bootstrap.min.css',
-  // '/css/bootstrap.min.css.map',
+  // '/sw.js',
+  // '/images/icons/Cooking-icon128.png',
+  // '/images/icons/Cooking-icon512.png',
+  '/css/bootstrap.min.css',
+  '/css/bootstrap.min.css.map',
   '/css/edit.css',
-  // '/css/home.css',
-  '/css/index.css',
-
+  '/css/home.css',
   // '/js/jquery-3.4.1.min.js',
   // '/js/bootstrap.bundle.min.js',
   // '/js/bootstrap.bundle.min.js.map',
@@ -25,8 +23,7 @@ var urlsToCache = [
   // '/js/recipe-functions.js',
   '/js/index-bundle.js',
   '/js/edit-bundle.js',
-  '/manifest.json',
-  '/images/icons/Cooking-icon128.png'
+  '/manifest.json'
 ];
 
 

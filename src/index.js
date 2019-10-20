@@ -1,4 +1,6 @@
 import 'bootstrap'
+import './scss/home.scss'
+
 import { getRecipes, createRecipe, removeRecipe, updateRecipe } from './recipes'
 import { getFilters, setFilters } from './filters'
 import { renderRecipes } from './views'

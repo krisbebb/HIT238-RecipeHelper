@@ -1,4 +1,6 @@
 import 'bootstrap'
+import './scss/edit.scss'
+
 import { initialiseEditPage } from './views'
 import { getIngredients, createIngredient,
         updateIngredient, removeIngredient,
