@@ -19,6 +19,10 @@ const saveRecipes = () => {
 
 const getRecipes = () => recipes
 
+const getRecipeById = (id) => {
+    return recipes.find((recipe) => recipe.id === id)
+}
+
 const createRecipe = () => {
     const id = uuidv4()
     recipes.push({
@@ -29,6 +33,8 @@ const createRecipe = () => {
         allAvailable: false
     })
     saveRecipes()
+
+    return id
 }
 
 // remove recipe from the array
@@ -44,7 +50,7 @@ const removeRecipe = (id) => {
 }
 
 const updateRecipe = (id, updates) => {
-    const recipe = recipes.find((recipe) => recipe.id === id)
+    const recipe = getRecipeById(id)
     
     if (!recipe) {
         return
@@ -66,12 +72,87 @@ const updateRecipe = (id, updates) => {
     }
 
     saveRecipes()
-
-    
-
-
 }
+
+const getIngredients = (id) => {
+    const recipe = getRecipeById(id)
+    const ingredients = recipe.ingredients
+    return ingredients
+}
+
+const createIngredient = (id, item) => {
+    const recipe = getRecipeById(id)
+    const ingredient = {
+        item: item,
+        inStock: false
+    }
+    recipe.ingredients.push(ingredient)
+    setAvailability(id)
+}
+
+const updateIngredient = (id, recipeItem, updates) => {
+    const recipe = getRecipeById(id)
+
+    const ingredient = recipe.ingredients.find((ingredient) => ingredient.item === recipeItem)
+    
+    if (!recipe | !ingredient) {
+        return
+    }
+
+    if (typeof updates.item === 'string') {
+        ingredient.item = updates.item
+    }
+
+    if (typeof updates.inStock === 'boolean') {
+        ingredient.inStock = updates.inStock
+    }
+    setAvailability(recipe.id)
+}
+
+// remove ingredient from the array
+const removeIngredient = (id, item) => {
+    const recipe = getRecipeById(id)
+    const ingredientIndex = recipe.ingredients.findIndex((ingredient) => {
+        return ingredient.item === item
+    })
+    console.log(recipe.ingredients)
+
+    if (ingredientIndex > -1) {
+        recipe.ingredients.splice(ingredientIndex, 1)
+    }
+    setAvailability(id)
+}
+
+const setAvailability = (id) => {
+    const recipe = getRecipeById(id)
+
+    if (recipe.ingredients.length === 0) {
+        updateRecipe(recipe.id, {
+            allAvailable: false
+        })
+        return
+    }
+
+    for (let i = 0; i < recipe.ingredients.length; i++) {
+         if (!recipe.ingredients[i].inStock) {
+             updateRecipe(recipe.id, {
+                 allAvailable: false
+             })
+             saveRecipes()
+             return
+         } else {
+            updateRecipe(recipe.id, {
+                allAvailable: true
+            })
+             recipe.allAvailable = true
+             saveRecipes()
+         }
+    }
+    
+ }
 
 recipes = loadRecipes()
 
-export { getRecipes, createRecipe, removeRecipe, updateRecipe }
+export { getRecipes, createRecipe, removeRecipe, updateRecipe,
+    getIngredients, createIngredient, updateIngredient,
+    removeIngredient, setAvailability }
