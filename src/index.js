@@ -1,16 +1,13 @@
 import 'bootstrap'
 import './scss/home.scss'
 
-import { getRecipes, createRecipe, removeRecipe, updateRecipe } from './recipes'
-import { getFilters, setFilters } from './filters'
+import {createRecipe } from './recipes'
+import { setFilters } from './filters'
 import { renderRecipes } from './views'
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
-import registerEvents from 'serviceworker-webpack-plugin/lib/browser/registerEvents'
-
-
+// import registerEvents from 'serviceworker-webpack-plugin/lib/browser/registerEvents'
 
 renderRecipes()
-
 
 // add event listener to button
 document.querySelector('#add-recipe').addEventListener('click', (e) => {
