@@ -1,6 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
 
-
 body {
     background-color: #d1c4e9;
 }
@@ -57,7 +56,7 @@ ul.top-nav {
 .tab-content {
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 50vh;
+    height: 48vh;
     margin: 1em 0;
     border: 2px solid black;
 }
@@ -72,6 +71,7 @@ ul.top-nav {
     align-items: center;
     background-color: #ede7f6;
 }
+
 .tab__heading {
     padding: 1rem;
 }
@@ -104,3 +104,10 @@ ul.top-nav {
     padding: 1rem;
 }
 
+.card-footer {
+    background-color: #b39ddb;
+    color: black;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}

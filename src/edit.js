@@ -2,21 +2,15 @@ import 'bootstrap'
 import './scss/edit.scss'
 
 import { initialiseEditPage } from './views'
-import { getIngredients, createIngredient,
-        updateIngredient, removeIngredient,
-        setAvailability, updateRecipe, removeRecipe } from './recipes'
+import { createIngredient, setAvailability, updateRecipe, removeRecipe } from './recipes'
 import { renderIngredients} from './views'
-// import { get } from 'http'
 
-// const headingElement =  document.querySelector('#recipe-heading')
 const titleElement = document.querySelector('#recipe-title')
 const instructionsElement = document.querySelector('#recipe-instructions')
 const removeElement = document.querySelector('#remove-recipe')
 const saveElement = document.querySelector('#save-recipe')
-// const ingredientsElement = document.querySelector('#ingredients')
 const ingredientsSave = document.querySelector('#ingredients-save')
 const ingredientsInput = document.querySelector('#ingredients-input')
-// const ingredientsList = document.querySelector("#ingredients-list")
 
 // get recipe id from url hash
 // load in any saved recipes from localStorage
@@ -63,14 +57,3 @@ window.addEventListener('storage', (e) => {
     }
 })
 
-// if ('serviceWorker' in navigator) {
-// 	window.addEventListener('load', function() {
-// 	  navigator.serviceWorker.register('../js/sw.js').then(function(registration) {
-// 		// Registration was successful
-// 		console.log('ServiceWorker registration successful with scope: ', registration.scope);
-// 	  }, function(err) {
-// 		// registration failed :(
-// 		console.log('ServiceWorker registration failed: ', err);
-// 	  });
-// 	});
-//   }

@@ -1,14 +1,8 @@
-/* html {
-    font-size: 18px;
-
-} */
-
 @import "~bootstrap/scss/bootstrap";
 
 body {
     background-color: #d1c4e9;
 }
-
 
 .list-group-item {
     padding: 1rem 1.6rem;
@@ -20,7 +14,7 @@ body {
 #recipes {
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 50vh;
+    height: 51vh;
     margin: 1em 0;
     border: 2px solid black;
 }
@@ -33,7 +27,6 @@ ul.nav {
 .header {
     background-color: #ede7f6;
 }
-
 
 .header__titles {
     display: flex;

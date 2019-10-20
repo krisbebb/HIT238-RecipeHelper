@@ -3,26 +3,15 @@ var CACHE_VERSION = 'v1';
 var CACHE_NAME = CACHE_TITLE + '-' + CACHE_VERSION;
 // const { assets } = global.serviceWorkerOption
 var urlsToCache = [
-  // '../',
-  // ...assets,
   '/',
-  // '/favicon.ico',
+  '/favicon.ico',
   // './sw.js',
   '/images/icons/Cooking-icon128.png',
   '/images/icons/Cooking-icon512.png',
-  // '/css/bootstrap.min.css',
-  // '/css/bootstrap.min.css.map',
   '/css/edit.css',
-  // '/css/home.css',
   '/css/index.css',
-
-  // '/js/jquery-3.4.1.min.js',
-  // '/js/bootstrap.bundle.min.js',
-  // '/js/bootstrap.bundle.min.js.map',
   '/index.html',
   '/edit.html',
-  // '/js/uuidv4.js',
-  // '/js/recipe-functions.js',
   '/js/index-bundle.js',
   '/js/edit-bundle.js',
   '/manifest.json',
