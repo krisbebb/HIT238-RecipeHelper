@@ -13,3 +13,5 @@ Libraries used
 - extract-text-webpack-plugin
 - http://icons.iconarchive.com/icons/atyourservice/service-categories/48/Cooking-icon.png
 
+NEW APP-LINK - https://krisbebb.github.io/HIT238-RecipeHelper/public/index.html
+
