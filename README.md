@@ -1,7 +1,15 @@
 # HIT238-RecipeHelper
 
-Libraries used (so far)
+Libraries used
 - UUIDv4
 - live-server
 - Bootstrap4.1.3 
-- Apache Cordova
+- babel
+- webpack
+- babel-loader
+- webpack-dev-server
+- babel-polyfill
+- serviceworker-webpack-plugin
+- extract-text-webpack-plugin
+- http://icons.iconarchive.com/icons/atyourservice/service-categories/48/Cooking-icon.png
+
